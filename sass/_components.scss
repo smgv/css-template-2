@@ -16,6 +16,12 @@
   align-items: center;
   justify-content: center;
 
+  @media only screen and (max-width: $bp-small-xl) {
+    order: 1;
+    flex: 0 0 100%;
+    background-color: var(--color-grey-light-2);
+  }
+
   &__input {
     font-family: inherit;
     font-size: inherit;
@@ -132,11 +138,25 @@
   list-style: none;
   margin-top: 3.5rem;
 
+  @media only screen and (max-width: $bp-small) {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+  }
+
   &__item {
     position: relative;
 
     &:not(:last-child) {
       margin-bottom: 0.5rem;
+
+      @media only screen and (max-width: $bp-small) {
+        margin: 0;
+      }
+    }
+
+    @media only screen and (max-width: $bp-small) {
+      flex: 1;
     }
 
     &::before {
@@ -178,6 +198,16 @@
 
       display: flex;
       align-items: center;
+
+      @media only screen and (max-width: $bp-small) {
+        justify-content: center;
+        padding: 2rem;
+      }
+
+      @media only screen and (max-width: $bp-smallest) {
+        flex-direction: column;
+        padding: 1rem 0.5rem;
+      }
     }
   }
 
@@ -186,6 +216,12 @@
     height: 1.75rem;
     margin-right: 2rem;
     fill: currentColor;
+
+    @media only screen and (max-width: $bp-small) {
+      margin-right: 0;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
   }
 }
 
@@ -196,6 +232,10 @@
   color: var(--color-grey-light-4);
   text-align: center;
   padding: 2.5rem;
+
+  @media only screen and (max-width: $bp-small) {
+    display: none;
+  }
 }
 
 ////////////////////////////////////
@@ -224,6 +264,11 @@
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     padding: 1.5rem 3rem;
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: 1.8rem;
+      padding: 1.5rem 2rem;
+    }
   }
 
   &__stars {
@@ -256,6 +301,10 @@
     align-self: stretch;
     padding: 0 2.25rem;
 
+    @media only screen and (max-width: $bp-small) {
+      padding: 0 1.5rem;
+    }
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -265,11 +314,19 @@
       font-size: 2.25rem;
       font-weight: 300;
       margin-bottom: -0.3rem;
+
+      @media only screen and (max-width: $bp-small) {
+        font-size: 1.8rem;
+      }
     }
 
     &-count {
       font-size: 0.8rem;
       text-transform: uppercase;
+
+      @media only screen and (max-width: $bp-small) {
+        font-size: 0.5rem;
+      }
     }
   }
 }
@@ -360,15 +417,18 @@
       margin-right: 0.7rem;
 
       // Older Browser
-      // background-image: url("../img/chevron-thin-right.svg");
-      // background-size: cover;
+      background-image: url("../img/chevron-thin-right.svg");
+      background-size: cover;
 
       // New Browser - using Mask
-      background-color: var(--color-primary);
-      mask-image: url("../img/chevron-thin-right.svg");
-      mask-size: cover;
-      -webkit-mask-image: url("../img/chevron-thin-right.svg");
-      -webkit-mask-size: cover;
+      @supports (-webkit-mask-image: url()) or (mask-image: url()) {
+        background-color: var(--color-primary);
+        background-image: none;
+        mask-image: url("../img/chevron-thin-right.svg");
+        mask-size: cover;
+        -webkit-mask-image: url("../img/chevron-thin-right.svg");
+        -webkit-mask-size: cover;
+      }
     }
   }
 }
@@ -416,6 +476,11 @@
 
   position: relative;
   overflow: hidden;
+
+  @media only screen and (max-width: $bp-small) {
+    padding: 2rem;
+    margin-bottom: 3rem;
+  }
 
   &__text {
     margin-bottom: 2rem;
@@ -477,6 +542,10 @@
 .cta {
   padding: 3.5rem;
   text-align: center;
+
+  @media only screen and (max-width: $bp-small) {
+    padding: 3rem 0;
+  }
 
   &__book-now {
     text-transform: uppercase;
